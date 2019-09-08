@@ -1,3 +1,9 @@
+/**
+ * @fileOverview es6转amd帮助类函数
+ * @author <a href="http://qww.elins.cn">邱文武</a>
+ * @version 1.2
+ */
+
 require('mm_expand');
 const Module = require('./module')
 const babel = require('babel-core').transform;

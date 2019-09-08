@@ -454,7 +454,9 @@ function keys(obj, file) {
  * @property {Function(Object):String} keys 查询获取对象属性键
  * @property {Function(Object):String} info 查询对象明细
  */
-global.$ = {
+if(typeof($) === "undefined")
+{
+	global.$ = {
 	// 数据连接池, 用于存储有关数据库的操作类
 	pool: {},
 	// 任务池, 用于存储定时任务操作类
@@ -513,6 +515,8 @@ global.$ = {
 	// 查询对象明细
 	info: info
 };
+}
+
 /* == 数字原型函数 == */
 (function() {
 	/**
@@ -1083,15 +1087,22 @@ global.$ = {
 	 * @return {String} 全路径
 	 */
 	String.prototype.fullname = function(dir) {
-		var f = this + '';
-		if (f.startsWith(runPath)) {
-			return f;
-		} else if (f.replace(slash, '/').startWith('./')) {
+		var file = this + '';
+		var f = file.replace(slash, '/');
+		if (f.startWith('./')) {
 			if (dir) {
-				return join(dir.fullname(), f);
+				file = f.replace('./', dir.fullname());
+			} else {
+				file = f.replace('./', runPath);
 			}
+		} else if (f.startWith('/')) {
+			file = runPath + f;
 		}
-		return join(runPath, f);
+		file = join(file, '');
+		if (file.indexOf('.') === -1 && !file.endsWith(slash)) {
+			file += slash;
+		}
+		return file;
 	};
 	/**
 	 * @description 取路径
@@ -1197,7 +1208,6 @@ global.$ = {
 		return copyFileSync(this.fullname(), file.fullname());
 	};
 })();
-
 
 /* == 数组原型函数 == */
 (function() {
