@@ -1,0 +1,35 @@
+{
+  "name": "mm_es6_to_amd",
+  "version": "1.2.1",
+  "description": "这是超级美眉es6标准代码转amd的帮助函数模块，还同时将es6标准代码转es5，支持vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiuwenwu/mm_es6_to_amd.git"
+  },
+  "keywords": [
+    "mycachebase",
+    "async",
+    "await",
+    "promise",
+    "add",
+    "del",
+    "set",
+    "get",
+    "query",
+    "run",
+    "exec"
+  ],
+  "author": "邱文武",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiuwenwu/mm_es6_to_amd/issues"
+  },
+  "homepage": "https://github.com/qiuwenwu/mm_es6_to_amd#readme",
+  "dependencies": {
+    "mm_expand": "^1.2.1"
+  }
+}
