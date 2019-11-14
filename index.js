@@ -65,12 +65,7 @@ function set_vue_code(script) {
 	return null;
 }
 
-/**
- * @description ES6标准的代码转为AMD标准的代码, 可转vue
- * @param {String} text
- * @return {String} 返回转换后的代码格式
- */
-module.exports = function(text) {
+function es6_to_amd(text) {
 	var code;
 	if (text) {
 		var script;
@@ -97,3 +92,14 @@ module.exports = function(text) {
 
 	return code;
 };
+
+if (global.$) {
+	$.es6_to_amd = es6_to_amd;
+}
+
+/**
+ * @description ES6标准的代码转为AMD标准的代码, 可转vue
+ * @param {String} text
+ * @return {String} 返回转换后的代码格式
+ */
+module.exports = es6_to_amd;
